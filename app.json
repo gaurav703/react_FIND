@@ -1,0 +1,17 @@
+{
+  "name": "find",
+  "displayName": "find",
+  "description": "finds the first element in an array that satisfies the provided testing function",
+  "author": "jonschlinkert ",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+"
+  }
+
+  
+}
