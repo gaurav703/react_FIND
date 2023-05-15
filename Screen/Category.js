@@ -22,17 +22,14 @@ function Category({ navigation }) {
    function renderCategory(itemData) {
       function renderPressed() {
          navigation.navigate('Meal-Overview',
-            {
-               categoryId: itemData.item.id
-            }
-         );
-
+            {category: itemData.item.id});
       }
       
       return  <CategoryGrid 
                            title={itemData.item.title}
                            color={itemData.item.color}
                            onPress={renderPressed}
+                           
               />
    }
 

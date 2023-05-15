@@ -1,7 +1,10 @@
 import { Pressable, View, Text, StyleSheet, Platform } from "react-native";
 
 
-function CategoryGrid({ title, color, onPress }) {
+// it is possible to use to pass navigation props to pass .but it is good to use useNavigation hook.  
+function CategoryGrid({  title, color, onPress }) {
+  // useNavigation is a hook that returns the navigation prop of the screen it is used in. 
+
 
   return (
 
@@ -12,7 +15,7 @@ function CategoryGrid({ title, color, onPress }) {
       // android_ripple is not working in ios.
       // android_ripple is not working in android for shadow effect.
       >
-        <View style={[styles.gridpressableView, { backgroundColor: color }]}>
+        <View style={[styles.gridpressableView, {backgroundColor : color}]}>
 
           <Text style={styles.griditemtext}>{title}</Text>
 
@@ -29,12 +32,22 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 15,
     height: 150,
-   // elevation: 2,
-    borderRadius: 10,
+    elevation: 2,
+    // elevation is used to give shadow effect in android.
+    // elevation is not working in ios.
+    // borderRadius is used to give rounded corner to the box.
+    borderRadius: 5,
     // backgroundColor helps in ios for shadow effect and android for elevation effect . backgroundColor is not working in android for shadow effect.  
 
     shadowColor: 'black',
     shadowOpacity: 0.26,
+    // shadowOpacity is used to give transparency to the shadow effect.
+    // shadowOpacity is not working in ios.
+    // shadowColor is used to give color to the shadow effect.
+    // overflow is used to hide the shadow effect which is coming out of the box.
+    // shadowOffset is used to give offset to the shadow effect.
+    // shadowRadius is used to give blur effect to the shadow effect.
+
     overflow: Platform.OS === 'andriod' ? 'hidden' : 'visible', // overflow is used to hide the shadow effect which is coming out of the box.
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10,

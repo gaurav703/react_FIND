@@ -1,28 +1,32 @@
-import { MEALS } from "../data/dummy";
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import  { StyleSheet, View, Flatlist, Text } from 'react-native';
+import MealItem from "../Components/MealItem";
+import  MEALS  from '../data/dummy';
 // route is property to use data moving from one screen to another .
 
 function Meal({ route }) {
 
-  const catId = route.params.categoryId;
+ const catId = route.params.category;
+ const displayedMeals = MEALS.filter((mealItem) => {
+   return mealItem.categoryIds.indexOf(catId) >= 0
+ });
+  // filter method is not working 
+  
+  function renderMealItem(itemData) {
+    return   <MealItem 
+                    title={itemData.item.title} />
 
 
-  //    const displayedMeals = MEALS.filter( ( mealItem ) => { 
-  //     return  mealItem.categoryIds.indexOf(catId) >= 0; 
-  //    });
-
-
-  //     function renderMealItem(itemData){
-  //       return  <MealItem title = {itemData.item.title}/> ;  
-  //     }
-
+  }
 
   return (
     <View style={styles.container}>
-      <Text>
-        {catId}
-      </Text>
+      <Flatlist
+      data = { MEALS }
+      keyExtractor = { (item) => item.id }
+      renderItem = { renderMealItem }
+      >
+      </Flatlist>
 
     </View>
   );
@@ -39,5 +43,10 @@ const styles = StyleSheet.create({
 
   },
 
+  text: {
+    fontSize: 30,
+    color: 'red',
+
+  }
 
 });
